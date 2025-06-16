@@ -1,144 +1,129 @@
-"use client"
-import { useQuery } from "@tanstack/react-query";
-import { orpc } from "@/utils/orpc";
-import Link from "next/link";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { BookOpen, Edit, Users, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function HomePage() {
-  const healthCheck = useQuery(orpc.healthCheck.queryOptions());
-
   return (
-    <div 
-      className="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
-      style={{
-        backgroundImage: 'url("/students-banner.jpg")',
-      }}
-    >
-      <div className="relative">
-        {/* Hero Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Welcome to our Daily blog post
-              </h1>
-              <p className="text-lg text-muted-foreground mb-8">
-                Access your personalized workspace and manage your content efficiently
-              </p>
-              <Link
-                href="/dashboard"
-                className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Feature 1 */}
-              <div className="p-6 rounded-lg border bg-card">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Documentation</h3>
-                <p className="text-muted-foreground">
-                  Access comprehensive guides and documentation
-                </p>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="p-6 rounded-lg border bg-card">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 20h9" />
-                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Quick Start</h3>
-                <p className="text-muted-foreground">
-                  Get up and running with our quick start guide
-                </p>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="p-6 rounded-lg border bg-card">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                    <line x1="12" y1="17" x2="12.01" y2="17" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Support</h3>
-                <p className="text-muted-foreground">
-                  Get help from our support team when you need it
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of users who are already using our platform to manage
-              their work efficiently.
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white">
+              Welcome to our daily blog post
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+              Access your personal workspace and manage your work efficiently
             </p>
-            <div className="flex gap-4 justify-center">
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-              >
-                Sign In
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/signup">
+                <Button size="lg" className="px-8 py-3 text-lg">
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
               </Link>
-              <Link
-                href="/learn-more"
-                className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-              >
-                Learn More
+              <Link href="/dashboard">
+                <Button size="lg" variant="outline" className="px-8 py-3 text-lg">
+                  View Dashboard
+                </Button>
               </Link>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">What you can do</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Discover, create, and connect with our powerful blogging platform
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Read Stories */}
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mx-auto mb-6">
+                  <BookOpen className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Read Stories</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Discover amazing stories from writers around the world
+                </p>
+                <Link href="/posts">
+                  <Button variant="outline" className="w-full">
+                    Browse Posts
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* Write Posts */}
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mx-auto mb-6">
+                  <Edit className="h-8 w-8 text-green-600 dark:text-green-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Write Posts</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Share your thoughts and experiences with our community
+                </p>
+                <Link href="/dashboard">
+                  <Button variant="outline" className="w-full">
+                    Start Writing
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* Connect */}
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mx-auto mb-6">
+                  <Users className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Connect</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  Engage with other writers and build your network
+                </p>
+                <Link href="/community">
+                  <Button variant="outline" className="w-full">
+                    Join Community
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Ready to get started?</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+              Join thousands of users who are already using our platform to manage their work efficiently.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/signup">
+                <Button size="lg" className="px-8 py-3 text-lg">
+                  Sign Up Now
+                </Button>
+              </Link>
+              <Link href="/about">
+                <Button size="lg" variant="outline" className="px-8 py-3 text-lg">
+                  Learn More
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  );
+  )
 }

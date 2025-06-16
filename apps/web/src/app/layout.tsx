@@ -1,45 +1,32 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../index.css";
-import Providers from "@/components/providers";
-import Header from "@/components/header";
-// import UserMenu from "@/components/user-menu";
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Navigation } from "@/components/navigation"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "my-blog-app",
-  description: "my-blog-app",
-};
+  title: "Daily Blog - Share Your Stories",
+  description: "A platform for writers to share their daily thoughts and stories",
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Providers>
-          <div className="flex justify-end p-4">
-            {/* <UserMenu /> */}
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <div className="min-h-screen bg-background">
+            <Navigation />
+            <main>{children}</main>
           </div>
-          <div className="grid grid-rows-[auto_1fr] h-svh">
-            <Header />
-            {children}
-          </div>
-        </Providers>
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
